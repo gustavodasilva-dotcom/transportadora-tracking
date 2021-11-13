@@ -1,0 +1,15 @@
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\bin\Debug\net5.0\Transportadora.Tracking.Entities.deps.json
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\bin\Debug\net5.0\Transportadora.Tracking.Entities.dll
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\bin\Debug\net5.0\ref\Transportadora.Tracking.Entities.dll
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\bin\Debug\net5.0\Transportadora.Tracking.Entities.pdb
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\obj\Debug\net5.0\Transportadora.Tracking.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\obj\Debug\net5.0\Transportadora.Tracking.Entities.AssemblyInfoInputs.cache
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\obj\Debug\net5.0\Transportadora.Tracking.Entities.AssemblyInfo.cs
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\obj\Debug\net5.0\Transportadora.Tracking.Entities.csproj.CoreCompileInputs.cache
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\obj\Debug\net5.0\Transportadora.Tracking.Entities.dll
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\obj\Debug\net5.0\ref\Transportadora.Tracking.Entities.dll
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\obj\Debug\net5.0\Transportadora.Tracking.Entities.pdb
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\bin\Debug\net5.0\Transportadora.Tracking.CustomDataAnnotations.dll
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\bin\Debug\net5.0\Transportadora.Tracking.CustomDataAnnotations.pdb
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\obj\Debug\net5.0\Transportadora.Tracking.Entities.csproj.AssemblyReference.cache
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Entities\obj\Debug\net5.0\Transportadora.Tracking.Entities.csproj.CopyComplete

@@ -1,0 +1,17 @@
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\bin\Debug\net5.0\Transportadora.Tracking.Repositories.deps.json
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\bin\Debug\net5.0\Transportadora.Tracking.Repositories.dll
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\bin\Debug\net5.0\ref\Transportadora.Tracking.Repositories.dll
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\bin\Debug\net5.0\Transportadora.Tracking.Repositories.pdb
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\obj\Debug\net5.0\Transportadora.Tracking.Repositories.csproj.AssemblyReference.cache
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\obj\Debug\net5.0\Transportadora.Tracking.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\obj\Debug\net5.0\Transportadora.Tracking.Repositories.AssemblyInfoInputs.cache
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\obj\Debug\net5.0\Transportadora.Tracking.Repositories.AssemblyInfo.cs
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\obj\Debug\net5.0\Transportadora.Tracking.Repositories.csproj.CoreCompileInputs.cache
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\obj\Debug\net5.0\Transportadora.Tracking.Repositories.dll
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\obj\Debug\net5.0\ref\Transportadora.Tracking.Repositories.dll
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\obj\Debug\net5.0\Transportadora.Tracking.Repositories.pdb
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\bin\Debug\net5.0\Transportadora.Tracking.Entities.dll
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\bin\Debug\net5.0\Transportadora.Tracking.Entities.pdb
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\obj\Debug\net5.0\Transportadora.Tracking.Repositories.csproj.CopyComplete
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\bin\Debug\net5.0\Transportadora.Tracking.CustomDataAnnotations.dll
+C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Repositories\bin\Debug\net5.0\Transportadora.Tracking.CustomDataAnnotations.pdb
