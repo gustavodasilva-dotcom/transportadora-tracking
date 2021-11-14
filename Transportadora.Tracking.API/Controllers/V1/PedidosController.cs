@@ -26,6 +26,7 @@ namespace Transportadora.Tracking.API.Controllers.V1
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Inserir([FromBody] PedidoInputModel pedido)
         {
@@ -37,7 +38,7 @@ namespace Transportadora.Tracking.API.Controllers.V1
 
                 await _logService.GravarLog(pedido, "Pedido cadastrado com sucesso!", pedido.CodigoPedido);
 
-                return Ok();
+                return Ok($@"Pedido {pedido.CodigoPedido} cadastrado com sucesso!");
             }
             catch (ConflictException e)
             {
