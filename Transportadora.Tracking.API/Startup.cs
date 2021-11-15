@@ -29,6 +29,9 @@ namespace Transportadora.Tracking.API
             services.AddScoped<ILogService, LogService>();
             services.AddScoped<ILogRepository, LogRepository>();
 
+            services.AddScoped<IOcorrenciaService, OcorrenciaService>();
+            services.AddScoped<IOcorrenciaRepository, OcorrenciaRepository>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

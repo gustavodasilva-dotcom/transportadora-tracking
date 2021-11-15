@@ -6,5 +6,9 @@ namespace Transportadora.Tracking.Services.Interfaces
     public interface IPedidoService
     {
         Task Inserir(PedidoInputModel pedido);
+
+        Task<bool> PedidoExiste(string codigoPedido);
+
+        Task<int> RetornaPedidoId(string codigoPedido);
     }
 }

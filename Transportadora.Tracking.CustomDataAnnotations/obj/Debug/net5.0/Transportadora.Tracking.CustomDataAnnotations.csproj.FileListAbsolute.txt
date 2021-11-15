@@ -2,7 +2,6 @@ C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.Cust
 C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.CustomDataAnnotations\bin\Debug\net5.0\Transportadora.Tracking.CustomDataAnnotations.dll
 C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.CustomDataAnnotations\bin\Debug\net5.0\ref\Transportadora.Tracking.CustomDataAnnotations.dll
 C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.CustomDataAnnotations\bin\Debug\net5.0\Transportadora.Tracking.CustomDataAnnotations.pdb
-C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.CustomDataAnnotations\obj\Debug\net5.0\Transportadora.Tracking.CustomDataAnnotations.csproj.AssemblyReference.cache
 C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.CustomDataAnnotations\obj\Debug\net5.0\Transportadora.Tracking.CustomDataAnnotations.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.CustomDataAnnotations\obj\Debug\net5.0\Transportadora.Tracking.CustomDataAnnotations.AssemblyInfoInputs.cache
 C:\Users\gusta\source\repos\Transportadora.Tracking\Transportadora.Tracking.CustomDataAnnotations\obj\Debug\net5.0\Transportadora.Tracking.CustomDataAnnotations.AssemblyInfo.cs

@@ -24,7 +24,7 @@ namespace Transportadora.Tracking.API.Controllers.V1
         }
 
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -38,7 +38,7 @@ namespace Transportadora.Tracking.API.Controllers.V1
 
                 await _logService.GravarLog(pedido, "Pedido cadastrado com sucesso!", pedido.CodigoPedido);
 
-                return Ok($@"Pedido {pedido.CodigoPedido} cadastrado com sucesso!");
+                return StatusCode(201, $@"Pedido {pedido.CodigoPedido} cadastrado com sucesso!");
             }
             catch (ConflictException e)
             {
@@ -46,6 +46,8 @@ namespace Transportadora.Tracking.API.Controllers.V1
             }
             catch (Exception e)
             {
+                await _logService.GravarLog(pedido, $"Ocorreu o seguinte erro ao realizar esse processo: {e.Message}.", pedido.CodigoPedido);
+
                 return StatusCode(500, $"Ocorreu o seguinte erro ao realizar esse processo: {e.Message}.");
             }
         }

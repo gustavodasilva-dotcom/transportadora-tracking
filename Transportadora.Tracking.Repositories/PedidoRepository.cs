@@ -291,5 +291,24 @@ namespace Transportadora.Tracking.Repositories
 
             #endregion SQL
         }
+
+        public async Task<int> RetornaPedidoId(string codigoPedido)
+        {
+            #region SQL
+
+            try
+            {
+                var query = $@"SELECT PEDIDOID FROM PEDIDO WHERE CODIGOPEDIDO = '{codigoPedido}'";
+
+                using var conn = new SqlConnection(_connectionString);
+                return await conn.QueryFirstOrDefaultAsync<int>(query, new { codigoPedido });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            #endregion SQL
+        }
     }
 }

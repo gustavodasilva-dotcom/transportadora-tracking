@@ -21,5 +21,7 @@ namespace Transportadora.Tracking.Repositories.Interfaces
         Task<int> CadastrarPedido(Pedido pedido, int remetenteId, int destinatarioId);
 
         Task CadastrarItem(Item item, int pedidoId);
+
+        Task<int> RetornaPedidoId(string codigoPedido);
     }
 }

@@ -145,5 +145,29 @@ namespace Transportadora.Tracking.Services
                 throw;
             }
         }
+
+        public async Task<bool> PedidoExiste(string codigoPedido)
+        {
+            try
+            {
+                return await _pedidoRepository.PedidoExiste(codigoPedido);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<int> RetornaPedidoId(string codigoPedido)
+        {
+            try
+            {
+                return await _pedidoRepository.RetornaPedidoId(codigoPedido);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

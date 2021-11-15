@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Transportadora.Tracking.CustomDataAnnotations;
 
 namespace Transportadora.Tracking.Entities.Models.InputModel
 {
@@ -14,6 +15,7 @@ namespace Transportadora.Tracking.Entities.Models.InputModel
         public int Quantidade { get; set; }
 
         [Required(ErrorMessage = "O valor da chave Preco está ausente.")]
+        [Preco(ErrorMessage = "O valor informado não pode ser considerado um preço.")]
         public string Preco { get; set; }
     }
 }
