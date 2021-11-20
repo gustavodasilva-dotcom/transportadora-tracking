@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Transportadora.Tracking.Services.CustomExceptions;
 using Transportadora.Tracking.Entities.Models.InputModel;
 using Transportadora.Tracking.Services.Interfaces;
+using Transportadora.Tracking.Entities.Models.ViewModel;
 
 namespace Transportadora.Tracking.API.Controllers.V1
 {
@@ -47,6 +48,30 @@ namespace Transportadora.Tracking.API.Controllers.V1
             catch (Exception e)
             {
                 await _logService.GravarLog(pedido, $"Ocorreu o seguinte erro ao realizar esse processo: {e.Message}.", pedido.CodigoPedido);
+
+                return StatusCode(500, $"Ocorreu o seguinte erro ao realizar esse processo: {e.Message}.");
+            }
+        }
+
+        [HttpGet("{codigoPedido}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<PedidoViewModel>> Obter([FromRoute] string codigoPedido)
+        {
+            try
+            {
+                return Ok(await _pedidoService.Obter(codigoPedido));
+            }
+            catch (NotFoundException e)
+            {
+                await _logService.GravarLog(e.Message, $"Ocorreu o seguinte erro ao realizar esse processo: {e.Message}.", codigoPedido);
+
+                return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                await _logService.GravarLog(e.Message, $"Ocorreu o seguinte erro ao realizar esse processo: {e.Message}.", codigoPedido);
 
                 return StatusCode(500, $"Ocorreu o seguinte erro ao realizar esse processo: {e.Message}.");
             }

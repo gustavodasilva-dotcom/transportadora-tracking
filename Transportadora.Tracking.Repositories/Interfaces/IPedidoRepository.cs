@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Transportadora.Tracking.Entities.Entities;
+using Transportadora.Tracking.Entities.Table;
 
 namespace Transportadora.Tracking.Repositories.Interfaces
 {
@@ -23,5 +24,11 @@ namespace Transportadora.Tracking.Repositories.Interfaces
         Task CadastrarItem(Item item, int pedidoId);
 
         Task<int> RetornaPedidoId(string codigoPedido);
+
+        Task<RemetenteTable> ObterRemetente(string identificacao);
+
+        Task<DestinatarioTable> ObterDestinatario(string codigoPedido);
+
+        Task<IEnumerable<ItemsTable>> ObterItems(string codigoPedido);
     }
 }

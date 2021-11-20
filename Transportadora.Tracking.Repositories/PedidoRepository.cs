@@ -1,9 +1,12 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Text;
 using System.Threading.Tasks;
 using Transportadora.Tracking.Entities.Entities;
+using Transportadora.Tracking.Entities.Table;
 using Transportadora.Tracking.Repositories.Interfaces;
 
 namespace Transportadora.Tracking.Repositories
@@ -302,6 +305,81 @@ namespace Transportadora.Tracking.Repositories
 
                 using var conn = new SqlConnection(_connectionString);
                 return await conn.QueryFirstOrDefaultAsync<int>(query, new { codigoPedido });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            #endregion SQL
+        }
+
+        public async Task<RemetenteTable> ObterRemetente(string codigoPedido)
+        {
+            #region SQL
+
+            try
+            {
+                var query = new StringBuilder();
+                
+                query.AppendLine(@"SELECT	    R.*");
+                query.AppendLine(@"FROM		    PEDIDO		AS P");
+                query.AppendLine(@"INNER JOIN	REMETENTE	AS R");
+                query.AppendLine(@"ON			P.REMETENTEID = R.REMETENTEID");
+                query.AppendLine($@"WHERE		P.CODIGOPEDIDO = '{codigoPedido}'");
+
+                using var conn = new SqlConnection(_connectionString);
+                return await conn.QueryFirstOrDefaultAsync<RemetenteTable>(query.ToString(), new { codigoPedido });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            #endregion SQL
+        }
+
+        public async Task<DestinatarioTable> ObterDestinatario(string codigoPedido)
+        {
+            #region SQL
+
+            try
+            {
+                var query = new StringBuilder();
+
+                query.AppendLine(@"SELECT	    R.*");
+                query.AppendLine(@"FROM		    PEDIDO		    AS P");
+                query.AppendLine(@"INNER JOIN	DESTINATARIO	AS R");
+                query.AppendLine(@"ON			P.DESTINATARIOID = R.DESTINATARIOID");
+                query.AppendLine($@"WHERE		P.CODIGOPEDIDO = '{codigoPedido}'");
+
+                using var conn = new SqlConnection(_connectionString);
+                return await conn.QueryFirstOrDefaultAsync<DestinatarioTable>(query.ToString(), new { codigoPedido });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            #endregion SQL
+        }
+
+        public async Task<IEnumerable<ItemsTable>> ObterItems(string codigoPedido)
+        {
+            #region SQL
+
+            try
+            {
+                var query = new StringBuilder();
+
+                query.AppendLine(@"SELECT	        I.*");
+                query.AppendLine(@"FROM		        ITEMS			AS I");
+                query.AppendLine(@"INNER JOIN	    PEDIDO_ITEMS	AS PIT	ON I.ITEMID		= PIT.ITEMID");
+                query.AppendLine(@"INNER JOIN	    PEDIDO			AS P	ON P.PEDIDOID	= PIT.PEDIDOID");
+                query.AppendLine($@"WHERE		    P.CODIGOPEDIDO = '{codigoPedido}';");
+
+                using var conn = new SqlConnection(_connectionString);
+                return await conn.QueryAsync<ItemsTable>(query.ToString());
             }
             catch (Exception)
             {

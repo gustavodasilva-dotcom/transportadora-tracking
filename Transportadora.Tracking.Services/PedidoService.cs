@@ -6,6 +6,8 @@ using Transportadora.Tracking.Entities.Models.InputModel;
 using Transportadora.Tracking.Repositories.Interfaces;
 using Transportadora.Tracking.Services.Interfaces;
 using Transportadora.Tracking.Services.CustomExceptions;
+using Transportadora.Tracking.Entities.Models.ViewModel;
+using System.Linq;
 
 namespace Transportadora.Tracking.Services
 {
@@ -139,6 +141,70 @@ namespace Transportadora.Tracking.Services
 
                     throw new ConflictException($"O pedido {pedido.CodigoPedido} já existe cadastrado! Procedimento inválido.");
                 }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<PedidoViewModel> Obter(string codigoPedido)
+        {
+            var pedidoRetorno = new PedidoViewModel();
+
+            try
+            {
+                if (!await _pedidoRepository.PedidoExiste(codigoPedido))
+                    throw new NotFoundException($"Pedido {codigoPedido} não encontrado.");
+
+                var rementente = await _pedidoRepository.ObterRemetente(codigoPedido);
+
+                if (rementente != null)
+                {
+                    var destinatario = await _pedidoRepository.ObterDestinatario(codigoPedido);
+
+                    if (destinatario != null)
+                    {
+                        var items = await _pedidoRepository.ObterItems(codigoPedido);
+
+                        if (items.Any())
+                        {
+                            var remetenteRetorno = new RemetenteViewModel
+                            {
+                                RazaoSocial = rementente.RazaoSocial,
+                                Empresa = rementente.Empresa == 1 ? true : false,
+                                Cnpj = rementente.Cnpj,
+                                Cpf = rementente.Cpf
+                            };
+
+                            pedidoRetorno.Remetente = remetenteRetorno;
+
+                            var destinatarioRetorno = new DestinatarioViewModel
+                            {
+                                RazaoSocial = destinatario.RazaoSocial,
+                                Empresa = destinatario.Empresa == 1 ? true : false,
+                                Cnpj = destinatario.Cnpj,
+                                Cpf = destinatario.Cpf
+                            };
+
+                            pedidoRetorno.Destintario = destinatarioRetorno;
+                        }
+                        else
+                        {
+                            throw new NotFoundException($"Pedido {codigoPedido} não possui items.");
+                        }
+                    }
+                    else
+                    {
+                        throw new NotFoundException($"Não foi encontrado destinatário cadastrado para o pedido {codigoPedido}.");
+                    }
+                }
+                else
+                {
+                    throw new NotFoundException($"Não foi encontrado remetente cadastrado para o pedido {codigoPedido}.");
+                }
+
+                return pedidoRetorno;
             }
             catch (Exception)
             {

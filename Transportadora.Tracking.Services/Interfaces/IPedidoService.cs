@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Transportadora.Tracking.Entities.Models.InputModel;
+using Transportadora.Tracking.Entities.Models.ViewModel;
 
 namespace Transportadora.Tracking.Services.Interfaces
 {
@@ -10,5 +11,7 @@ namespace Transportadora.Tracking.Services.Interfaces
         Task<bool> PedidoExiste(string codigoPedido);
 
         Task<int> RetornaPedidoId(string codigoPedido);
+
+        Task<PedidoViewModel> Obter(string codigoPedido);
     }
 }
