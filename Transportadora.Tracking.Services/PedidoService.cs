@@ -151,6 +151,7 @@ namespace Transportadora.Tracking.Services
         public async Task<PedidoViewModel> Obter(string codigoPedido)
         {
             var pedidoRetorno = new PedidoViewModel();
+            var itemsRetorno = new List<ItemViewModel>();
 
             try
             {
@@ -188,6 +189,75 @@ namespace Transportadora.Tracking.Services
                             };
 
                             pedidoRetorno.Destintario = destinatarioRetorno;
+
+                            foreach (var item in items)
+                            {
+                                itemsRetorno.Add(new ItemViewModel
+                                    {
+                                        Codigo = item.Codigo,
+                                        Descricao = item.Descricao,
+                                        Quantidade = item.Quantidade,
+                                        Preco = Convert.ToString(item.Preco)
+                                    }
+                                );
+                            }
+
+                            pedidoRetorno.Items = itemsRetorno;
+
+                            var pedido = await _pedidoRepository.ObterPedido(codigoPedido);
+
+                            if (pedido != null)
+                            {
+                                pedidoRetorno.PedidoID = pedido.PedidoID;
+                                pedidoRetorno.CodigoPedido = pedido.CodigoPedido;
+
+                                var enderecoRemetente = await _pedidoRepository.ObterEndereco(rementente.EnderecoID);
+
+                                if (enderecoRemetente != null)
+                                {
+                                    var enderecoDestinatario = await _pedidoRepository.ObterEndereco(destinatario.EnderecoID);
+
+                                    if (enderecoDestinatario != null)
+                                    {
+                                        var enderecoDestinatarioRetorno = new EnderecoViewModel
+                                        {
+                                            Cep = enderecoDestinatario.Cep,
+                                            Logradouro = enderecoDestinatario.Logradouro,
+                                            Numero = enderecoDestinatario.Numero,
+                                            Bairro = enderecoDestinatario.Bairro,
+                                            Cidade = enderecoDestinatario.Cidade,
+                                            Estado = enderecoDestinatario.Estado,
+                                            Pais = enderecoDestinatario.Pais
+                                        };
+
+                                        var enderecoRemetenteRetorno = new EnderecoViewModel
+                                        {
+                                            Cep = enderecoRemetente.Cep,
+                                            Logradouro = enderecoRemetente.Logradouro,
+                                            Numero = enderecoRemetente.Numero,
+                                            Bairro = enderecoRemetente.Bairro,
+                                            Cidade = enderecoRemetente.Cidade,
+                                            Estado = enderecoRemetente.Estado,
+                                            Pais = enderecoRemetente.Pais
+                                        };
+
+                                        pedidoRetorno.Destintario.Endereco = enderecoDestinatarioRetorno;
+                                        pedidoRetorno.Remetente.Endereco = enderecoRemetenteRetorno;
+                                    }
+                                    else
+                                    {
+                                        throw new NotFoundException($"Não foi encontrado endereco de destinatário para o pedido {codigoPedido}.");
+                                    }
+                                }
+                                else
+                                {
+                                    throw new NotFoundException($"Não foi encontrado endereco de remetente para o pedido {codigoPedido}.");
+                                }
+                            }
+                            else
+                            {
+                                throw new NotFoundException($"Cabeçalho do pedido {codigoPedido} inexistente.");
+                            }
                         }
                         else
                         {

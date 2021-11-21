@@ -25,10 +25,14 @@ namespace Transportadora.Tracking.Repositories.Interfaces
 
         Task<int> RetornaPedidoId(string codigoPedido);
 
+        Task<PedidoTable> ObterPedido(string codigoPedido);
+
         Task<RemetenteTable> ObterRemetente(string identificacao);
 
         Task<DestinatarioTable> ObterDestinatario(string codigoPedido);
 
         Task<IEnumerable<ItemsTable>> ObterItems(string codigoPedido);
+
+        Task<EnderecoTable> ObterEndereco(int idEndereco);
     }
 }

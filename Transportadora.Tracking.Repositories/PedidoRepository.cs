@@ -314,6 +314,25 @@ namespace Transportadora.Tracking.Repositories
             #endregion SQL
         }
 
+        public async Task<PedidoTable> ObterPedido(string codigoPedido)
+        {
+            #region SQL
+
+            try
+            {
+                var query = $@"SELECT * FROM PEDIDO WHERE CODIGOPEDIDO = '{codigoPedido}';";
+
+                using var conn = new SqlConnection(_connectionString);
+                return await conn.QueryFirstOrDefaultAsync<PedidoTable>(query, new { codigoPedido });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            #endregion SQL
+        }
+
         public async Task<RemetenteTable> ObterRemetente(string codigoPedido)
         {
             #region SQL
@@ -380,6 +399,25 @@ namespace Transportadora.Tracking.Repositories
 
                 using var conn = new SqlConnection(_connectionString);
                 return await conn.QueryAsync<ItemsTable>(query.ToString());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            #endregion SQL
+        }
+
+        public async Task<EnderecoTable> ObterEndereco(int idEndereco)
+        {
+            #region SQL
+
+            try
+            {
+                var query = $@"SELECT * FROM ENDERECO WHERE ENDERECOID = {idEndereco};";
+
+                using var conn = new SqlConnection(_connectionString);
+                return await conn.QueryFirstOrDefaultAsync<EnderecoTable>(query, new { idEndereco });
             }
             catch (Exception)
             {
