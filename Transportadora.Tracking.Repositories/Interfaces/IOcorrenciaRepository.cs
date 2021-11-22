@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Transportadora.Tracking.Entities.Entities;
+using Transportadora.Tracking.Entities.Table;
 
 namespace Transportadora.Tracking.Repositories.Interfaces
 {
@@ -10,5 +12,7 @@ namespace Transportadora.Tracking.Repositories.Interfaces
         Task<int> ObterCodigoOcorrencia(int codigoOcorrencia);
 
         Task<int> Inserir(Ocorrencia ocorrencia);
+
+        Task<IEnumerable<OcorrenciaTable>> ObterOcorrencias(string codigoPedido);
     }
 }

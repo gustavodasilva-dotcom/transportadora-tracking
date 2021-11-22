@@ -210,6 +210,7 @@ namespace Transportadora.Tracking.Services
                             {
                                 pedidoRetorno.PedidoID = pedido.PedidoID;
                                 pedidoRetorno.CodigoPedido = pedido.CodigoPedido;
+                                pedidoRetorno.DataIntegracao = pedido.DataCadastro.ToString("yyyy-MM-dd HH-mm-ss");
 
                                 var enderecoRemetente = await _pedidoRepository.ObterEndereco(rementente.EnderecoID);
 

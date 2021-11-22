@@ -1,9 +1,11 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Transportadora.Tracking.Entities.Entities;
+using Transportadora.Tracking.Entities.Table;
 using Transportadora.Tracking.Repositories.Interfaces;
 
 namespace Transportadora.Tracking.Repositories
@@ -71,6 +73,32 @@ namespace Transportadora.Tracking.Repositories
 
                 using var conn = new SqlConnection(_connectionString);
                 return await conn.ExecuteScalarAsync<int>(query);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            #endregion SQL
+        }
+
+        public async Task<IEnumerable<OcorrenciaTable>> ObterOcorrencias(string codigoPedido)
+        {
+            #region SQL
+
+            try
+            {
+                var query =
+                $@"SELECT		 CODIGOOCORRENCIA
+                    			,DESCRICAO
+                    			,DATAOCORRENCIA
+                    FROM		OCORRENCIA			AS O
+                    INNER JOIN	OCORRENCIA_PEDIDO	AS OP ON O.OCORRENCIAID = OP.OCORRENCIAID
+                    INNER JOIN	PEDIDO				AS P  ON OP.PEDIDOID	= P.PEDIDOID
+                    WHERE		P.CODIGOPEDIDO = '{codigoPedido}';";
+
+                using var conn = new SqlConnection(_connectionString);
+                return await conn.QueryAsync<OcorrenciaTable>(query, new { codigoPedido });
             }
             catch (Exception)
             {

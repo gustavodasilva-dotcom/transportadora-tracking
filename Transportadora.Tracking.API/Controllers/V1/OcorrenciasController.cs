@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using Transportadora.Tracking.Entities.Models.InputModel;
+using Transportadora.Tracking.Entities.Models.ViewModel;
 using Transportadora.Tracking.Services.CustomExceptions;
 using Transportadora.Tracking.Services.Interfaces;
 
@@ -49,6 +50,27 @@ namespace Transportadora.Tracking.API.Controllers.V1
             catch (Exception e)
             {
                 await _logService.GravarLog(ocorrencia, $"Ocorreu o seguinte erro ao realizar esse processo: {e.Message}.", ocorrencia.CodigoPedido);
+
+                return StatusCode(500, $"Ocorreu o seguinte erro ao realizar esse processo: {e.Message}.");
+            }
+        }
+
+        [HttpGet("{codigoPedido}")]
+        public async Task<ActionResult<InfoOcorrenciaViewModel>> Obter([FromRoute] string codigoPedido)
+        {
+            try
+            {
+                return Ok(await _ocorrenciaService.Obter(codigoPedido));
+            }
+            catch (NotFoundException e)
+            {
+                await _logService.GravarLog(e.Message, $"Ocorreu o seguinte erro ao realizar esse processo: {e.Message}.", codigoPedido);
+
+                return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                await _logService.GravarLog(e.Message, $"Ocorreu o seguinte erro ao realizar esse processo: {e.Message}.", codigoPedido);
 
                 return StatusCode(500, $"Ocorreu o seguinte erro ao realizar esse processo: {e.Message}.");
             }

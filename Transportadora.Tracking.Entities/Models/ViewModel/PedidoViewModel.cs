@@ -8,6 +8,8 @@ namespace Transportadora.Tracking.Entities.Models.ViewModel
 
         public string CodigoPedido { get; set; }
 
+        public string DataIntegracao { get; set; }
+
         public RemetenteViewModel Remetente { get; set; }
 
         public DestinatarioViewModel Destintario { get; set; }
